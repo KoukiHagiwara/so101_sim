@@ -42,6 +42,7 @@ def generate_launch_description():
     # このLaunchファイルで起動する「全て」のノードにシミュレーション時間を強制する
     set_sim_time = SetParameter(name='use_sim_time', value=True)
 
+    world_file = os.path.join(pkg_vla_manipulator_sim, 'worlds', 'so101_env.sdf')
     # 1. Gazebo の起動 (過去の成功コードと全く同じ構文)
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
@@ -52,7 +53,7 @@ def generate_launch_description():
             ])
         ]),
         launch_arguments={
-            'gz_args': '-r empty.sdf',
+            'gz_args': f'-r {world_file}',
         }.items(),
     )
 

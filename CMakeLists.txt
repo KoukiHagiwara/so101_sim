@@ -16,6 +16,7 @@ find_package(trajectory_msgs REQUIRED)
 install(DIRECTORY
   launch 
   config
+  worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
