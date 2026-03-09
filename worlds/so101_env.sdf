@@ -49,8 +49,8 @@
       </link>
     </model>
 
-    <model name="red_block">
-      <pose>0.15 0 0.52 0 0 0</pose>
+    <model name="yellow_block">
+      <pose>0.28 0 0.506 0 0 0</pose>
       <link name="link">
         <inertial>
           <mass>0.05</mass>
@@ -62,7 +62,7 @@
         </inertial>
         <collision name="collision">
           <geometry>
-            <box><size>0.04 0.04 0.04</size></box>
+            <box><size>0.048 0.016 0.012</size></box>
           </geometry>
           <surface>
             <friction>
@@ -75,11 +75,11 @@
         </collision>
         <visual name="visual">
           <geometry>
-            <box><size>0.04 0.04 0.04</size></box>
+            <box><size>0.048 0.016 0.012</size></box>
           </geometry>
           <material>
-            <ambient>1 0 0 1</ambient>
-            <diffuse>1 0 0 1</diffuse>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
             <specular>0.1 0.1 0.1 1</specular>
           </material>
         </visual>
