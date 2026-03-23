@@ -1,16 +1,38 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100
+    update_rate: 100  # Hz
     use_sim_time: true
 
-    joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
-
+    # --- MoveIt / 手動操作用 ---
     arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
     gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    
+    # --- AI / 推論ノード直接指令用 ---
+    ai_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+    ai_gripper_controller:
+      type: position_controllers/JointGroupPositionController
+# ===================================================
+# Gazebo Harmonic 用のPIDゲイン
+# ===================================================
+    gains:
+      shoulder_pan: {p: 1000.0, d: 50.0}
+      shoulder_lift: {p: 1000.0, d: 50.0}
+      elbow_flex: {p: 1000.0, d: 50.0}
+      wrist_flex: {p: 1000.0, d: 50.0}
+      wrist_roll: {p: 1000.0, d: 50.0}
+      gripper: {p: 1000.0, d: 50.0}
+      
+# ---------------------------------------------------------------------
+# 各コントローラーの詳細設定
+# ---------------------------------------------------------------------
 
 arm_controller:
   ros__parameters:
@@ -35,3 +57,28 @@ gripper_controller:
     state_interfaces:
       - position
       - velocity
+
+ai_position_controller:
+  ros__parameters:
+    joints:
+      - shoulder_pan
+      - shoulder_lift
+      - elbow_flex
+      - wrist_flex
+      - wrist_roll
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+ai_gripper_controller:
+  ros__parameters:
+    joints:
+      - gripper
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+

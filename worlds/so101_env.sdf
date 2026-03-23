@@ -1,15 +1,16 @@
 <?xml version="1.0" ?>
-<sdf version="1.8">
+<sdf version="1.9">
   <world name="so101_world">
     <physics name="1ms" type="ignored">
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1.0</real_time_factor>
     </physics>
-    <plugin filename="ignition-gazebo-physics-system" name="ignition::gazebo::systems::Physics"></plugin>
-    <plugin filename="ignition-gazebo-user-commands-system" name="ignition::gazebo::systems::UserCommands"></plugin>
-    <plugin filename="ignition-gazebo-scene-broadcaster-system" name="ignition::gazebo::systems::SceneBroadcaster"></plugin>
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
     
-    <plugin filename="ignition-gazebo-sensors-system" name="ignition::gazebo::systems::Sensors">
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
       <render_engine>ogre2</render_engine>
     </plugin>
 
@@ -90,31 +91,11 @@
       <static>true</static> 
       <pose>0.15 0.40 0.52 -1.57 0 -3.14</pose>
       <link name='camera_stand_link'>
-        <inertial>
-            <mass>1</mass>
-            <inertia>
-                <ixx>0.043333</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>0.043333</iyy>
-                <iyz>0</iyz>
-                <izz>0.08</izz>
-            </inertia>
-        </inertial>
-        <collision name='collision'>
-            <geometry>
-                <mesh>
-                    <scale>0.001 0.001 0.001</scale>
-                    <uri>camera_case.stl</uri>
-                </mesh>
-            </geometry>
-        </collision>
         <visual name='visual'>
             <geometry>
                 <mesh>
                     <scale>0.001 0.001 0.001</scale>
-                    <uri>camera_case.stl</uri>
-                </mesh>
+                    <uri>camera_case.stl</uri> </mesh>
             </geometry>
             <material>
               <ambient>0.3 0.3 0.3 1</ambient>
